@@ -4,57 +4,60 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* יוצר מרווח שווה בין הלמעלה, האמצע והלמטה */
+    justify-content: space-between;
     background-color: #ffebee;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
-    padding: 50px 0; /* נותן קצת אוויר מהקצוות */
+    padding: 40px 10px; /* הוספתי פדינג צדי לניידים */
     box-sizing: border-box;
 }
 
 h1#question {
     color: #d32f2f;
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* קצת יותר קטן לבסיס */
     margin: 0;
     z-index: 2;
+    text-align: center;
 }
 
-/* הלב באמצע */
+/* הלב באמצע - מותאם לרזולוציות */
 .heart-bg {
-    position: relative; /* משנים מ-absolute כדי שיתפוס מקום באמצע ה-Flex */
-    font-size: 200px;
+    position: relative;
+    font-size: clamp(120px, 25vw, 250px); /* גודל דינמי לפי המסך */
     color: #ff5252;
     animation: beat 1.2s infinite ease-in-out;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-shadow: 0 0 20px rgba(255, 82, 82, 0.4);
 }
 
 @keyframes beat {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.1); }
 }
 
 /* הכפתורים למטה */
 .buttons {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
-    min-height: 150px; /* מקום לכפתור שגדל */
+    min-height: 200px; /* מקום לכפתור שיגדל מאוד */
     z-index: 2;
     width: 100%;
 }
 
 button {
-    padding: 15px 35px;
-    font-size: 1.2rem;
+    padding: 12px 28px;
+    font-size: 1.1rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease-out; /* מהירות תגובה טובה יותר */
     white-space: nowrap;
+    touch-action: manipulation; /* מונע זום בטעות בנייד */
 }
 
 #yes-btn {
@@ -69,7 +72,7 @@ button {
     border: 1px solid #ddd;
 }
 
-/* מסך הצלחה */
+/* מסך הצלחה ותמונה רספונסיבית */
 .hidden { display: none !important; }
 
 #success-screen {
@@ -81,4 +84,21 @@ button {
     align-items: center;
     justify-content: center;
     z-index: 100;
+    padding: 20px;
+    text-align: center;
+}
+
+.couple-img {
+    max-width: 90%; /* לא יברח מהצדדים בטלפון */
+    max-height: 50vh; /* שלא יהיה ארוך מדי */
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    object-fit: cover;
+}
+
+/* התאמות ספציפיות למסכים ממש קטנים */
+@media (max-width: 400px) {
+    h1#question { font-size: 1.8rem; }
+    button { padding: 10px 20px; font-size: 0.9rem; }
 }

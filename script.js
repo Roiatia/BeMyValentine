@@ -38,4 +38,10 @@ yesBtn.addEventListener('click', () => {
 
     // אופציונלי: להוסיף קונפטי כאן
     console.log("Success! Happy Valentine's Day");
+    // הזיקוקים
+        confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
 });
