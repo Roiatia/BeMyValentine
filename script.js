@@ -11,16 +11,17 @@ const noTexts = [
     "תחשבי על זה שוב...",
     "נו באמת קארין!",
     "אולי בכל זאת?",
-    "🥺מה",
+    "בטוחה ?",
     "טעות בלחיצה, נכון?"
 ];
 noBtn.addEventListener('click', () => {
-    numClicks++;
-    yesSize+= 0.6;
-    yesBtn.style.fontSize = yesSize + "rem";
-    yesBtn.style.padding = (yesSize * 10) + "px " + (yesSize * 20) + "px";
+    numClicks++; // וודא שזה השם שהגדרת למעלה (let numClicks = 0)
+    yesSize += 0.3;
 
-    // change the text of the "no" button
+    yesBtn.style.fontSize = yesSize + "rem";
+
+    yesBtn.style.padding = "15px 30px";
+
     noBtn.innerText = noTexts[textIndex];
     textIndex = (textIndex + 1) % noTexts.length;
 
@@ -30,20 +31,24 @@ noBtn.addEventListener('click', () => {
 
         noBtn.style.position = 'fixed';
         noBtn.style.left = x + 'px';
-        noBtn.style.top = y + 'px';    }
+        noBtn.style.top = y + 'px';
+    }
 
-    if (noClicks >= 6) {
+    if (numClicks >= 6) {
         noBtn.style.display = "none";
         yesBtn.style.position = "fixed";
         yesBtn.style.top = "0";
         yesBtn.style.left = "0";
         yesBtn.style.width = "100vw";
         yesBtn.style.height = "100vh";
-        yesBtn.style.fontSize = "5rem";
+        yesBtn.style.fontSize = "3rem";
         yesBtn.style.borderRadius = "0";
         yesBtn.innerText = "תלחצי עליי וזהו! ❤️";
+        yesBtn.style.display = "flex";
+        yesBtn.style.alignItems = "center";
+        yesBtn.style.justifyContent = "center";
     }
-})
+});
 let textIndex = 0;
 
 noBtn.addEventListener('click', () => {
