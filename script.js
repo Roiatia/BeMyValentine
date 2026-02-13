@@ -5,13 +5,13 @@ const noBtn = document.getElementById('no-btn');
 const mainContainer = document.getElementById('main-container');
 const successScreen = document.getElementById('success-screen');
 
-// רשימת משפטים מצחיקים כשהיא לוחצת על "לא"
+//text for the "no" button
 const noTexts = [
     "את בטוחה?",
     "תחשבי על זה שוב...",
     "נו באמת קארין!",
     "אולי בכל זאת?",
-    "🥺",
+    "🥺מה",
     "טעות בלחיצה, נכון?"
 ];
 noBtn.addEventListener('click', () => {
@@ -20,7 +20,7 @@ noBtn.addEventListener('click', () => {
     yesBtn.style.fontSize = yesSize + "rem";
     yesBtn.style.padding = (yesSize * 10) + "px " + (yesSize * 20) + "px";
 
-    // משנים את הטקסט של כפתור ה-"לא"
+    // change the text of the "no" button
     noBtn.innerText = noTexts[textIndex];
     textIndex = (textIndex + 1) % noTexts.length;
 
@@ -47,16 +47,16 @@ noBtn.addEventListener('click', () => {
 let textIndex = 0;
 
 noBtn.addEventListener('click', () => {
-    // מגדילים את הכפתור "כן"
+//yes size up
     yesSize += 0.5;
     yesBtn.style.fontSize = yesSize + "rem";
     yesBtn.style.padding = (yesSize * 10) + "px " + (yesSize * 20) + "px";
 
-    // משנים את הטקסט של כפתור ה-"לא"
+// no button text change
     noBtn.innerText = noTexts[textIndex];
     textIndex = (textIndex + 1) % noTexts.length;
 
-    // אם הכפתור כבר ממש ענק, הוא יכול להסתיר את ה"לא"
+// if the no button is clicked more than 5 times, it disappears
     if (yesSize > 5) {
         noBtn.style.display = "none";
     }
@@ -67,9 +67,8 @@ yesBtn.addEventListener('click', () => {
     successScreen.classList.remove('hidden');
     successScreen.style.display = 'flex';
 
-    // אופציונלי: להוסיף קונפטי כאן
     console.log("Success! Happy Valentine's Day");
-    // הזיקוקים
+    // confetti effect
         confetti({
             particleCount: 150,
             spread: 70,
